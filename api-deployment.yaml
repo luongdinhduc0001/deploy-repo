@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: ldd000/public-repo-1-f8846321-2078-4c6f-a30e-f103737b545f:latest
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: idcregcred1

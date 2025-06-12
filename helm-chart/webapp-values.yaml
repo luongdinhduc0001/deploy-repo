@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: your-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: http://gitlab.dev.local/simple-node-webapp/deploy-repo.git
+    targetRevision: HEAD
+    path: helm-chart
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: your-app-ns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
