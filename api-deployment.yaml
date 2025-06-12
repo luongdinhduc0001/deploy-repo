@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ldd000/public-repo-1-f8846321-2078-4c6f-a30e-f103737b545f:latest
+          image: ldd000/myappbackend:latest2
           ports:
             - containerPort: 5000
           imagePullPolicy: Always
